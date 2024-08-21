@@ -193,7 +193,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 37193247}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.21146809, y: 0.000000027459958, z: -0.000000005941267, w: 0.9773849}
+  m_LocalRotation: {x: 0.21146807, y: 0, z: 0, w: 0.9773849}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -866,7 +866,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1210507180}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2566679, y: -0.000000032203776, z: 0.000000008552178, w: 0.9664997}
+  m_LocalRotation: {x: 0.25666794, y: 0, z: 0, w: 0.9664997}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1297,6 +1297,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Remy
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 54d7ae6daef29814ca0e8c360d157f33, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8f53840bc430a144c90e8c23ee560b36, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 54d7ae6daef29814ca0e8c360d157f33, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1378,7 +1386,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2127290342}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15452503, y: -0.001279733, z: 0.00020015503, w: 0.98798805}
+  m_LocalRotation: {x: 0.15452506, y: -0.001279733, z: 0.00020015506, w: 0.98798805}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

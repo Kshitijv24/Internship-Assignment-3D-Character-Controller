@@ -11,10 +11,16 @@ public class PlayerMovement : MonoBehaviour
     CharacterController characterController;
     float turnSmoothVelocity;
     float trueSpeed;
+    bool isSprinting;
     bool isGrounded;
     Vector2 velocity;
+    Animator animator;
 
-    private void Awake() => characterController = GetComponent<CharacterController>();
+    private void Awake()
+    {
+        characterController = GetComponent<CharacterController>();
+        animator = GetComponentInChildren<Animator>();
+    }
 
     private void Start() => trueSpeed = walkSpeed;
 
@@ -48,21 +54,37 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, turnAngle, 0f);
             Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             characterController.Move(moveDirection.normalized * trueSpeed * Time.deltaTime);
+
+            if (isSprinting)
+                animator.SetFloat("Speed", 2);
+            else
+                animator.SetFloat("Speed", 1);
+        }
+        else
+        {
+            animator.SetFloat("Speed", 0);
         }
     }
 
     private void HandleSprinting()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
             trueSpeed = sprintSpeed;
+            isSprinting = true;
+        }
 
         if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
             trueSpeed = walkSpeed;
+            isSprinting = false;
+        }
     }
 
     private void HandleJumping()
     {
         isGrounded = Physics.CheckSphere(transform.position, 0.1f, 1);
+        animator.SetBool("IsGrounded", isGrounded);
 
         if (isGrounded && velocity.y < 0)
             velocity.y = -1;
