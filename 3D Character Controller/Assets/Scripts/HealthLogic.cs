@@ -2,20 +2,10 @@ using UnityEngine;
 
 public class HealthLogic : MonoBehaviour
 {
-    public static HealthLogic Instance { get; private set; }
-
     [SerializeField] float maxHealth = 100f;
     [SerializeField] float currentHealth;
 
-    private void Awake()
-    {
-        if (Instance == null)
-            Instance = this;
-        else
-            Destroy(gameObject);
-    }
-
-    private void Start() => currentHealth = maxHealth;
+    private void Awake() => currentHealth = maxHealth;
 
     public float GetCurrentHealth() => currentHealth;
 

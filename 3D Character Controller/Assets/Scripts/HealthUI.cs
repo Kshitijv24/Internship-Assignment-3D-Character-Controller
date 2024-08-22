@@ -4,15 +4,18 @@ using UnityEngine.UI;
 public class HealthUI : MonoBehaviour
 {
     [SerializeField] Slider healthSlider;
+    HealthLogic healthLogic;
 
-    private void Start() => healthSlider.value = HealthLogic.Instance.GetCurrentHealth();
+    private void Awake() => healthLogic = GetComponent<HealthLogic>();
+
+    private void Start() => healthSlider.value = healthLogic.GetCurrentHealth();
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.H))
         {
-            HealthLogic.Instance.DamagePlayer(50f);
-            healthSlider.value = HealthLogic.Instance.GetCurrentHealth() / HealthLogic.Instance.GetMaxHealth();
+            healthLogic.DamagePlayer(50f);
+            healthSlider.value = healthLogic.GetCurrentHealth() / healthLogic.GetMaxHealth();
         }
     }
 }
