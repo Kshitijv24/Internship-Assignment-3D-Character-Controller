@@ -2,18 +2,18 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
-    HealthLogic healthLogic;
+    Health healthLogic;
 
-    private void Awake() => healthLogic = GetComponent<HealthLogic>();
+    private void Awake() => healthLogic = GetComponent<Health>();
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Hazard"))
             healthLogic.DamagePlayer(50f);
 
-        if (other.CompareTag("Coin"))
-        {
+        Coin coin = other.GetComponent<Coin>();
 
-        }
+        if (coin)
+            coin.CollectCoin();
     }
 }

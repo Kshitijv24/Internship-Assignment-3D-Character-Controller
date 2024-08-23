@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class HealthUI : MonoBehaviour
 {
-    [SerializeField] HealthLogic healthLogic;
+    [SerializeField] Health healthLogic;
 
     Slider healthSlider;
 
