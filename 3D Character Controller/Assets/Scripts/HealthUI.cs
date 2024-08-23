@@ -14,8 +14,10 @@ public class HealthUI : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.H))
         {
-            healthLogic.DamagePlayer(50f);
-            healthSlider.value = healthLogic.GetCurrentHealth() / healthLogic.GetMaxHealth();
+            healthLogic.DamagePlayer(10f);
+            UpdateHealthUI();
         }
     }
+
+    private void UpdateHealthUI() => healthSlider.value = healthLogic.GetCurrentHealth() / healthLogic.GetMaxHealth();
 }
