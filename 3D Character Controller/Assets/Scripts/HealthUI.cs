@@ -16,7 +16,7 @@ public class HealthUI : MonoBehaviour
         UpdateHealthUI();
 
         if (Input.GetKeyDown(KeyCode.H))
-            healthLogic.DamagePlayer(10f);
+            healthLogic.DamagePlayer(50f);
     }
 
     private void UpdateHealthUI() => healthSlider.value = healthLogic.GetCurrentHealth() / healthLogic.GetMaxHealth();

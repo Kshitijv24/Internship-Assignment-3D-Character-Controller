@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [HideInInspector] public bool isSprinting;
+    [HideInInspector] public bool isGrounded;
+
     [SerializeField] float turnSmoothTime = 0.1f;
     [SerializeField] float walkSpeed = 4f;
     [SerializeField] float sprintSpeed = 8f;
@@ -11,16 +14,10 @@ public class PlayerMovement : MonoBehaviour
     CharacterController characterController;
     float turnSmoothVelocity;
     float trueSpeed;
-    bool isSprinting;
-    bool isGrounded;
     Vector2 velocity;
-    Animator animator;
+    Vector3 direction;
 
-    private void Awake()
-    {
-        characterController = GetComponent<CharacterController>();
-        animator = GetComponentInChildren<Animator>();
-    }
+    private void Awake() => characterController = GetComponent<CharacterController>();
 
     private void Start() => trueSpeed = walkSpeed;
 
@@ -31,13 +28,15 @@ public class PlayerMovement : MonoBehaviour
         HandleJumping();
     }
 
+    public bool IsMoving => direction.magnitude >= 0.1f;
+
     private void HandleMovementAndCameraLook()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-        Vector3 direction = new Vector3(horizontal, 0, vertical).normalized;
+        direction = new Vector3(horizontal, 0, vertical).normalized;
 
-        if (direction.magnitude >= 0.1f)
+        if (IsMoving)
         {
             float targetAngle =
                 Mathf.Atan2(direction.x, direction.z) *
@@ -54,15 +53,6 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, turnAngle, 0f);
             Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             characterController.Move(moveDirection.normalized * trueSpeed * Time.deltaTime);
-
-            if (isSprinting)
-                animator.SetFloat("Speed", 2);
-            else
-                animator.SetFloat("Speed", 1);
-        }
-        else
-        {
-            animator.SetFloat("Speed", 0);
         }
     }
 
@@ -84,7 +74,6 @@ public class PlayerMovement : MonoBehaviour
     private void HandleJumping()
     {
         isGrounded = Physics.CheckSphere(transform.position, 0.1f, 1);
-        animator.SetBool("IsGrounded", isGrounded);
 
         if (isGrounded && velocity.y < 0)
             velocity.y = -1;

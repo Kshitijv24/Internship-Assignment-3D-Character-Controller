@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5488220491770059424}
   - component: {fileID: 9085921182198782892}
   - component: {fileID: 5136396322179912272}
+  - component: {fileID: -1121847304211304167}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -74,6 +75,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac1c852baaabb0f44b9a47e130813ded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSprinting: 0
+  isGrounded: 0
   turnSmoothTime: 0.1
   walkSpeed: 4
   sprintSpeed: 8
@@ -103,8 +106,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec267d7976e42b24bbcf79bba36786f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 200
+  maxHealth: 100
   currentHealth: 0
+--- !u!114 &-1121847304211304167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7087099446607996874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc98035dba4bdd948809654df060e327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3571361633381714847
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -17,4 +17,6 @@ public class Health : MonoBehaviour
 
         currentHealth -= damageAmount;
     }
+
+    public bool IsPlayerDead() => currentHealth <= 0;
 }
