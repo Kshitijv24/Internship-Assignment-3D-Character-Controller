@@ -49,6 +49,11 @@ public class PlayerAnimations : MonoBehaviour
     IEnumerator MakePlayerDown()
     {
         yield return new WaitForSeconds(1.8f);
-        playerMovement.transform.position = Vector3.down;
+
+        playerMovement.transform.position = 
+            new Vector3(
+                playerMovement.transform.position.x, 
+                -1, 
+                playerMovement.transform.position.z);
     }
 }
